@@ -1,0 +1,62 @@
+<!doctype html public "-//w3c//dtd html 3.2//en">
+<html>
+<head>
+<title>Shopping list</title>
+<style>
+    body{
+        padding:32px;
+    }
+    #Item_name{
+        height: 35px;
+        width: 250px;
+        border-color: cadetblue;
+        border-radius: 5px;
+    }
+    #button{
+        height: 35px;
+        width: 50px;
+        border-color: cadetblue;
+        border-radius: 5px;
+        background-color: cyan;
+    }
+    #delete_button{
+        background-color: aqua;
+    }
+    button{
+        
+        border-radius: 2px;
+        margin-top: 20px;
+        background-color:aqua;
+    }
+</style>
+</head>
+
+<body>
+ <script >
+var data = new Array(); 
+
+function add_element(){
+data.push(document.getElementById('Item_name').value); 
+document.getElementById('Item_name').value='';
+disp(); 
+}
+function remove_element(index_no){
+var Item_name=data.splice(index_no,1);
+disp(); 
+}
+function disp(){
+var html='';
+for (i=0;i<data.length;i++) 
+{ 
+html += "<li id=disp>"+ data[i] +':'+" <button    onClick='remove_element("+data.indexOf(data[i])+")'> Delete</button> " +"</li>"+ "<br >"; 
+} 
+
+document.getElementById('disp').innerHTML=html; 
+}
+</script>
+<h1>My Shopping List</h1>
+<input type=text  id='Item_name'>
+<input type=button id="button" value='Add' onClick='add_element()';>
+<div id=disp></div>
+</body>
+</html>
